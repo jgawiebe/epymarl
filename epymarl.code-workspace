@@ -1,0 +1,30 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "epymarl",
+				"type": "python",
+				"request": "launch",
+				"program": "src/main.py",
+				"args": ["--config=iql_ns", "--env-config=testing"],
+				"console": "integratedTerminal",
+				"justMyCode": true
+			},
+			{
+				"name": "Python: Current File",
+				"type": "python",
+				"request": "launch",
+				"program": "${file}",
+				"console": "integratedTerminal",
+				"justMyCode": true
+			}
+		]
+	}
+}

@@ -1,0 +1,16 @@
+env: "testing"
+
+env_args:
+  key: "rware:rware-tiny-2ag-v1"
+  time_limit: 500
+  pretrained_wrapper: null
+
+
+
+test_greedy: True
+test_nepisode: 100
+test_interval: 50000
+log_interval: 50000
+runner_log_interval: 10000
+learner_log_interval: 10000
+t_max: 20000

@@ -194,3 +194,6 @@ class _GymmaWrapper(MultiAgentEnv):
 
 
 REGISTRY["gymma"] = partial(env_fn, env=_GymmaWrapper)
+
+# environment for testing gym games
+REGISTRY["testing"] = partial(env_fn, env=_GymmaWrapper)
