@@ -1,7 +1,8 @@
 import numpy as np
 import os
 import random
-import collections
+#import collections
+from collections import Mapping
 from os.path import dirname, abspath
 from copy import deepcopy
 from sacred import Experiment, SETTINGS
@@ -55,7 +56,7 @@ def _get_config(params, arg_name, subfolder):
 
 def recursive_dict_update(d, u):
     for k, v in u.items():
-        if isinstance(v, collections.Mapping):
+        if isinstance(v, Mapping):
             d[k] = recursive_dict_update(d.get(k, {}), v)
         else:
             d[k] = v

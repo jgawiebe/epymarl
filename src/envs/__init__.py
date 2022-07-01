@@ -17,6 +17,32 @@ def env_fn(env, **kwargs) -> MultiAgentEnv:
 REGISTRY = {}
 REGISTRY["sc2"] = partial(env_fn, env=StarCraft2Env)
 
+# Cyborg additions
+import inspect
+from CybORG.CybORG import CybORG
+from CybORG.Agents import B_lineAgent, GreenAgent, BlueMonitorAgent
+from envs.cyborgenv import PyMARLWrapper
+
+#sys.path.append("..")
+
+path = str(inspect.getfile(CybORG))
+path = path[:-10] + '/Shared/Scenarios/Scenario1b.yaml'
+
+agents = {
+    'Red': B_lineAgent,
+    'Green': GreenAgent
+}
+
+#REGISTRY["cyborg"] = partial(
+#    env_fn,
+#    env = PyMARLWrapper(
+#        'Blue',
+#        CybORG(path,'sim',agents=agents)
+#    )
+#)
+
+# end of new stuff
+
 if sys.platform == "linux":
     os.environ.setdefault(
         "SC2PATH", os.path.join(os.getcwd(), "3rdparty", "StarCraftII")
@@ -78,7 +104,15 @@ class FlattenObservation(ObservationWrapper):
 class _GymmaWrapper(MultiAgentEnv):
     def __init__(self, key, time_limit, pretrained_wrapper, **kwargs):
         self.episode_limit = time_limit
-        self._env = TimeLimit(gym.make(f"{key}"), max_episode_steps=time_limit)
+        if key == 'cyborg':
+            self._env = PyMARLWrapper(
+                'Blue',
+                CybORG(path,'sim',agents=agents)
+            )
+        else:
+            self._env = gym.make(f"{key}")
+            
+        self._env = TimeLimit(self._env, max_episode_steps=time_limit)
         self._env = FlattenObservation(self._env)
 
         if pretrained_wrapper:
@@ -194,6 +228,9 @@ class _GymmaWrapper(MultiAgentEnv):
 
 
 REGISTRY["gymma"] = partial(env_fn, env=_GymmaWrapper)
+REGISTRY["cyborg"] = partial(env_fn, env=_GymmaWrapper)
 
 # environment for testing gym games
-REGISTRY["testing"] = partial(env_fn, env=_GymmaWrapper)
+#REGISTRY["testing"] = partial(env_fn, env=PyMARLWrapper)
+
+

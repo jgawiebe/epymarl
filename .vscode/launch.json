@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "stable",
+            "type": "python",
+            "request": "launch",
+            "program": "src\\main.py",
+            "args": ["--config=qmix", "--env-config=gymma", "with", "env_args.time_limit=500", "env_args.key='rware:rware-tiny-2ag-v1'", "t_max=1000"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "testing",
+            "type": "python",
+            "request": "launch",
+            "program": "src\\main.py",
+            "args": ["--config=iql_ns", "--env-config=cyborg", "with", "env_args.time_limit=500", "t_max=2000"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
