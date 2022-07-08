@@ -10,7 +10,6 @@ EPyMARL is  an extension of [PyMARL](https://github.com/oxwhirl/pymarl), and inc
 - Consistency of implementations between different algorithms (fair comparisons)
 
 # Table of Contents
-- [Extended Python MARL framework - EPyMARL](#extended-python-marl-framework---epymarl)
 - [Table of Contents](#table-of-contents)
 - [Installation & Run instructions](#installation--run-instructions)
   - [Installing LBF, RWARE, and MPE](#installing-lbf-rware-and-mpe)
