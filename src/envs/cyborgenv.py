@@ -2,7 +2,6 @@ import numpy as np
 from gym import spaces, Env
 
 import sys
-sys.path.append("..")
 
 from CybORG.CybORG import CybORG
 from CybORG.Agents.Wrappers import BaseWrapper, OpenAIGymWrapper, BlueTableWrapper,RedTableWrapper,EnumActionWrapper

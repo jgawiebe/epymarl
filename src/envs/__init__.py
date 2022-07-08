@@ -20,16 +20,16 @@ REGISTRY["sc2"] = partial(env_fn, env=StarCraft2Env)
 # Cyborg additions
 import inspect
 from CybORG.CybORG import CybORG
-from CybORG.Agents import B_lineAgent, GreenAgent, BlueMonitorAgent
+from CybORG.Agents import B_lineAgent, GreenAgent, BlueMonitorAgent, RedMeanderAgent
 from envs.cyborgenv import PyMARLWrapper
 
 #sys.path.append("..")
 
 path = str(inspect.getfile(CybORG))
-path = path[:-10] + '/Shared/Scenarios/Scenario1b.yaml'
+path = path[:-10] + '/Shared/Scenarios/Scenario2.yaml'
 
 agents = {
-    'Red': B_lineAgent,
+    'Red': RedMeanderAgent,
     'Green': GreenAgent
 }
 

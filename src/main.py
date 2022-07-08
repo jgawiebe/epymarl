@@ -107,7 +107,7 @@ if __name__ == '__main__':
 
     # Save to disk by default for sacred
     logger.info("Saving to FileStorageObserver in results/sacred.")
-    file_obs_path = os.path.join(results_path, f"sacred/{config_dict['name']}")
+    file_obs_path = os.path.join(results_path, f"sacred/{config_dict['name']}/{map_name}")
 
     # ex.observers.append(MongoObserver(db_name="marlbench")) #url='172.31.5.187:27017'))
     ex.observers.append(FileStorageObserver.create(file_obs_path))
