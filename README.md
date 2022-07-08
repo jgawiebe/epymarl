@@ -1,4 +1,6 @@
-# Extended Python MARL framework - EPyMARL
+# Fork of EPyMARL for use with CybORG reinforcement learning environment
+
+[CybORG](https://github.com/cage-challenge/cage-challenge-2) (Cyber Operations Research Gym) is a research environemnt for training autonomous agents.
 
 EPyMARL is  an extension of [PyMARL](https://github.com/oxwhirl/pymarl), and includes
 - Additional algorithms (IA2C, IPPO, MADDPG, MAA2C and MAPPO)
