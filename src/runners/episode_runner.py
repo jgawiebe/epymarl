@@ -64,13 +64,17 @@ class EpisodeRunner:
 
             # Pass the entire batch of experiences up till now to the agents
             # Receive the actions for each agent at this timestep in a batch of size 1
-            actions = self.mac.select_actions(self.batch, t_ep=self.t, t_env=self.t_env, test_mode=test_mode)
+            actions, roles, role_avail_actions = self.mac.select_actions(self.batch, t_ep=self.t,
+                                                                         t_env=self.t_env, test_mode=test_mode)
+            self.batch.update({"role_avail_actions": role_avail_actions.tolist()}, ts=self.t)
 
             reward, terminated, env_info = self.env.step(actions[0])
             episode_return += reward
 
             post_transition_data = {
                 "actions": actions,
+                "roles": roles,
+                "role_avail_actions": role_avail_actions,
                 "reward": [(reward,)],
                 "terminated": [(terminated != env_info.get("episode_limit", False),)],
             }
@@ -87,8 +91,8 @@ class EpisodeRunner:
         self.batch.update(last_data, ts=self.t)
 
         # Select actions in the last stored state
-        actions = self.mac.select_actions(self.batch, t_ep=self.t, t_env=self.t_env, test_mode=test_mode)
-        self.batch.update({"actions": actions}, ts=self.t)
+        actions, roles, role_avail_actions = self.mac.select_actions(self.batch, t_ep=self.t, t_env=self.t_env, test_mode=test_mode)
+        self.batch.update({"actions": actions, "roles": roles, "role_avail_actions": role_avail_actions}, ts=self.t)
 
         cur_stats = self.test_stats if test_mode else self.train_stats
         cur_returns = self.test_returns if test_mode else self.train_returns
