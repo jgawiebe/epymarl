@@ -1,5 +1,7 @@
 # Fork of EPyMARL for use with CybORG reinforcement learning environment
 
+*In development*: CybORG is currently available for a single RL agent. The pyMARLWrapper class wraps the environment so that it can be trained on using EPyMARL's multi-agent gym functionality.
+
 [CybORG](https://github.com/cage-challenge/cage-challenge-2) (Cyber Operations Research Gym) is a research environemnt for training autonomous agents.
 
 EPyMARL is  an extension of [PyMARL](https://github.com/oxwhirl/pymarl), and includes
