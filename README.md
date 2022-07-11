@@ -2,9 +2,6 @@
 
 *In development*: CybORG is currently available for a single RL agent. The pyMARLWrapper class wraps the environment so that it can be trained on using EPyMARL's multi-agent gym functionality.
 
-# Training a CybORG Agent
-`python src\\main.py --config=mappo_ns --env-config=gymma with env_args.time_limit=100 env_args.key="cyborg" t_max=2000000`
-
 [CybORG](https://github.com/cage-challenge/cage-challenge-2) (Cyber Operations Research Gym) is a research environemnt for training autonomous agents.
 
 EPyMARL is  an extension of [PyMARL](https://github.com/oxwhirl/pymarl), and includes
@@ -13,6 +10,9 @@ EPyMARL is  an extension of [PyMARL](https://github.com/oxwhirl/pymarl), and inc
 - Option for no-parameter sharing between agents (original PyMARL only allowed for parameter sharing)
 - Flexibility with extra implementation details (e.g. hard/soft updates, reward standarization, and more)
 - Consistency of implementations between different algorithms (fair comparisons)
+
+# Training a CybORG Agent
+`python src\\main.py --config=mappo_ns --env-config=gymma with env_args.time_limit=100 env_args.key="cyborg" t_max=2000000`
 
 # Run an experiment on a Gym environment
 
