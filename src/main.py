@@ -74,7 +74,9 @@ def config_copy(config):
 
 if __name__ == '__main__':
     params = deepcopy(sys.argv)
-    th.set_num_threads(1)
+    #th.set_num_threads(1)
+
+    #print(datetime.datetime.now().strftime("%Y-%m-%D_%H-%M"))
 
     # Get the defaults from default.yaml
     with open(os.path.join(os.path.dirname(__file__), "config", "default.yaml"), "r") as f:
@@ -90,28 +92,18 @@ if __name__ == '__main__':
     config_dict = recursive_dict_update(config_dict, env_config)
     config_dict = recursive_dict_update(config_dict, alg_config)
 
-    try:
-        map_name = config_dict["env_args"]["map_name"]
-    except:
-        map_name = config_dict["env_args"]["key"]    
+    if config_dict["env_args"]["key"] == "cyborg":
+        save_name = f"cyborg/scenario{config_dict['env_args']['scenario']}/{config_dict['env_args']['red_agent']}"
     
     
     # now add all the config to sacred
     ex.add_config(config_dict)
-    
-    for param in params:
-        if param.startswith("env_args.map_name"):
-            map_name = param.split("=")[1]
-        elif param.startswith("env_args.key"):
-            map_name = param.split("=")[1]
 
     # Save to disk by default for sacred
     logger.info("Saving to FileStorageObserver in results/sacred.")
-    file_obs_path = os.path.join(results_path, f"sacred/{config_dict['name']}/{map_name}")
+    file_obs_path = os.path.join(results_path, f"sacred/{config_dict['name']}/{save_name}")
 
-    # ex.observers.append(MongoObserver(db_name="marlbench")) #url='172.31.5.187:27017'))
     ex.observers.append(FileStorageObserver.create(file_obs_path))
-    # ex.observers.append(MongoObserver())
 
     ex.run_commandline(params)
 
