@@ -1,9 +1,12 @@
 env: "gymma"
 
 env_args:
-  key: null
+  key: "cyborg"
   time_limit: 100
   pretrained_wrapper: null
+  # cyborg args
+  scenario: 2
+  red_agent: "b_line"
 
 test_greedy: True
 test_nepisode: 100
