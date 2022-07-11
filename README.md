@@ -4,7 +4,7 @@
 
 [CybORG](https://github.com/cage-challenge/cage-challenge-2) (Cyber Operations Research Gym) is a research environemnt for training autonomous agents.
 
-EPyMARL is  an extension of [PyMARL](https://github.com/oxwhirl/pymarl), and includes
+[EPyMARL](https://github.com/uoe-agents/epymarl) is  an extension of [PyMARL](https://github.com/oxwhirl/pymarl), and includes
 - Additional algorithms (IA2C, IPPO, MADDPG, MAA2C and MAPPO)
 - Support for [Gym](https://github.com/openai/gym) environments (on top of the existing SMAC support)
 - Option for no-parameter sharing between agents (original PyMARL only allowed for parameter sharing)
