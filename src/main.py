@@ -90,10 +90,10 @@ if __name__ == '__main__':
     config_dict = recursive_dict_update(config_dict, env_config)
     config_dict = recursive_dict_update(config_dict, alg_config)
 
-    try:
-        map_name = config_dict["env_args"]["map_name"]
-    except:
-        map_name = config_dict["env_args"]["key"]    
+    if config_dict["env_args"]["key"] == "cyborg":
+        save_name = f"cyborg/scenario{config_dict['env_args']['scenario']}/{config_dict['env_args']['red_agent']}"
+    else:
+        save_name = config_dict['name']
     
     
     # now add all the config to sacred
@@ -107,11 +107,9 @@ if __name__ == '__main__':
 
     # Save to disk by default for sacred
     logger.info("Saving to FileStorageObserver in results/sacred.")
-    file_obs_path = os.path.join(results_path, f"sacred/{config_dict['name']}/{map_name}")
+    file_obs_path = os.path.join(results_path, f"sacred/{config_dict['name']}/RODE_RWARE")
 
-    # ex.observers.append(MongoObserver(db_name="marlbench")) #url='172.31.5.187:27017'))
     ex.observers.append(FileStorageObserver.create(file_obs_path))
-    # ex.observers.append(MongoObserver())
 
     ex.run_commandline(params)
 
